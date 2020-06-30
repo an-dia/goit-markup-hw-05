@@ -125,7 +125,7 @@ body {
   margin-left: 85px;
 }
 
-.site-nav .item + .item {
+.site-nav .site-nav-item + .site-nav-item {
   /* outline: 1px solid blueviolet; */
   margin-left: 50px;
 }
@@ -134,6 +134,7 @@ body {
   outline: 1px solid blueviolet;
   margin-right: 50px;
 } */
+
 .site-nav .link {
   /*Сначало геометрия*/
   display: block;
@@ -149,12 +150,32 @@ body {
   text-decoration: none;
 }
 
-.site-nav .link:hover,
-.site-nav .link:focus {
+.site-nav-item {
+  position: relative;
+}
+
+.site-nav-item .link.current::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: var(--accent-color);
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  /* opacity: 0; */
+}
+
+/* .site-nav-item .link:hover .link.current::before {
+  opacity: 1;
+} */
+
+.site-nav-item .link:hover,
+.site-nav-item .link:focus {
   color: var(--accent-color);
 }
 
-.site-nav .link.current {
+.site-nav-item .link.current {
   color: var(--accent-color);
 }
 
@@ -598,6 +619,32 @@ body {
   fill: var(--white-text-color);
 }
 
+/*Модальное окно*/
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.modal {
+  /*Position*/
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /*Geometry*/
+  min-width: 528px;
+  min-height: 581px;
+  /*Our*/
+  background-color: #ffffff;
+  box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.2), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 1px 3px rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+}
+
 /*Portfolio*/
 /*Filter*/
 .filter {
@@ -658,8 +705,13 @@ body {
     0px 1px 1px rgba(0, 0, 0, 0.12);
 }
 
-.portfolio .card:hover .description,
+/* .portfolio .card:hover .description,
 .portfolio .card:hover .card-img-conteiner::before {
+  opacity: 1;
+} */
+
+.portfolio-link:hover .description,
+.portfolio-link:hover .card-img-conteiner::before {
   opacity: 1;
 }
 
@@ -748,14 +800,15 @@ body {
 }
 
 /* .description-conteiner {
- 
-  padding: 63px 24px;
+  display: flex;
+  justify-content: center;
+  padding: 63px 0;
 } */
 
 .description {
   position: absolute;
   top: 0;
-
+  left: 0;
   opacity: 0;
 
   color: var(--white-text-color);
