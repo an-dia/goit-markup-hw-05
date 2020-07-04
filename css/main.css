@@ -196,7 +196,8 @@ body {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  color: #757575;
+  color: var(--primary-text-color);
+
   text-decoration: none;
 
   font-family: Roboto;
@@ -506,6 +507,11 @@ body {
 .link-customers:focus {
   border: 1px solid var(--accent-color);
   color: var(--accent-color);
+}
+
+.link-customers:hover .icon-logo,
+.link-customers:focus .icon-logo {
+  fill: var(--accent-color);
 }
 
 /* .customers-conteiner {
